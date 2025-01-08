@@ -1,7 +1,8 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const navItems = [
   { to: "/features", label: "Features" },
+  { to: "/search", label: "ユーチューブ検索" },
   { to: "/login", label: "Login", isButton: true },
 ];
 
@@ -10,12 +11,12 @@ const Header: React.FC = () => {
     <header className="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <NavLink
+        <Link
           to="/"
           className="text-3xl font-extrabold tracking-tight hover:text-gray-200"
         >
           TubeSearch
-        </NavLink>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-8">
@@ -25,7 +26,7 @@ const Header: React.FC = () => {
               <NavLink
                 key={item.to}
                 to={item.to}
-                className={({ isActive }) =>
+                className={({ isActive }: { isActive: boolean }) =>
                   isActive
                     ? "text-gray-200 font-semibold underline"
                     : "hover:text-gray-200 transition-colors duration-300"
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
               <NavLink
                 key={item.to}
                 to={item.to}
-                className={({ isActive }) =>
+                className={({ isActive }: { isActive: boolean }) =>
                   isActive
                     ? "hidden md:inline-block bg-white text-blue-600 font-bold px-5 py-2 rounded-full shadow-lg"
                     : "hidden md:inline-block bg-gray-100 text-blue-600 font-bold px-5 py-2 rounded-full shadow-lg hover:bg-white transition-transform transform hover:scale-105"
